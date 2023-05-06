@@ -30,30 +30,24 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-
 class _MyHomePageState extends State<MyHomePage> {
   final rate = 4.5;
   final _formKey = GlobalKey<FormState>();
   final _formValue = TextEditingController();
   double _valueToConvert = 0.0;
-  String _convertedValue = "";
+  String _convertedValue = '';
   void _convert() {
-    setState(() {
-
-    });
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
         title: Text(widget.title),
       ),
       body: Center(
-
         child: Column(
-
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Image.asset(
@@ -61,41 +55,37 @@ class _MyHomePageState extends State<MyHomePage> {
               alignment: AlignmentDirectional.topCenter,
             ),
             TextFormField(
-              decoration: const InputDecoration(labelText: "Enter the amount of money:"),
+              decoration: const InputDecoration(labelText: 'Enter the amount of money:'),
               keyboardType: TextInputType.number,
               controller: _formValue,
-              validator: (value){
-                if(value == null || value.isEmpty || double.tryParse(value.toString())==null){
-                  return "Please enter a valid number";
+              validator: (value) {
+                // ignore: noop_primitive_operations
+                if (value == null || value.isEmpty || double.tryParse(value.toString()) == null) {
+                  return 'Please enter a valid number';
                 }
                 return null;
               },
-              inputFormatters:<TextInputFormatter> [
+              inputFormatters: <TextInputFormatter>[
                 FilteringTextInputFormatter.digitsOnly,
               ],
             ),
             ElevatedButton(
-              onPressed: (){
-                if(_formKey.currentState!.validate()){
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
                   setState(() {
-                    _valueToConvert = double.parse(_formValue.text)*rate;
+                    _valueToConvert = double.parse(_formValue.text) * rate;
                     _convertedValue = _valueToConvert.toStringAsFixed(2);
-                    _convertedValue = "$_convertedValue RON";
+                    _convertedValue = '$_convertedValue RON';
                   });
-                }
-                else{
+                } else {
                   setState(() {
-                    _valueToConvert=0.0;
-                    _convertedValue="";
+                    _valueToConvert = 0.0;
+                    _convertedValue = '';
                   });
                 }
               },
-              style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.yellow,
-                  backgroundColor: Colors.white10
-              ),
+              style: ElevatedButton.styleFrom(foregroundColor: Colors.yellow, backgroundColor: Colors.white10),
               child: const Text('Convert'),
-
             )
           ],
         ),

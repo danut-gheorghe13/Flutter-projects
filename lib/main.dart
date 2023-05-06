@@ -1,7 +1,5 @@
-import 'package:flutter_homeworks/src/homework1_currency_converter.dart' as run;
+import 'src/homework1_currency_converter.dart' as run;
 
 void main() {
   run.main();
 }
-
-

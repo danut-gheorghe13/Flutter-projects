@@ -1,9 +1,11 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 void main() {
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -34,7 +36,6 @@ class MyStateFull extends StatefulWidget {
 }
 
 class _State extends State<MyStateFull> {
-
   final _controller = TextEditingController();
   int _enteredNumber = 0;
   String _conclusion = '';
@@ -68,15 +69,24 @@ class _State extends State<MyStateFull> {
 
   bool isSquare(int value) {
     int counter = 0;
-    while (pow(counter, 2) < value) {counter++;}
-    if (pow(counter, 2) == value) {return true;}
+    // ignore: always_put_control_body_on_new_line
+    while (pow(counter, 2) < value) {
+      counter++;
+    }
+    if (pow(counter, 2) == value) {
+      return true;
+    }
     return false;
   }
 
   bool isTriangular(int value) {
     int counter = 0;
-    while (pow(counter, 3) < value){ counter++;}
-    if (pow(counter, 3) == value) {return true;}
+    while (pow(counter, 3) < value) {
+      counter++;
+    }
+    if (pow(counter, 3) == value) {
+      return true;
+    }
     return false;
   }
 
@@ -84,45 +94,42 @@ class _State extends State<MyStateFull> {
     setState(() {
       _controller.clear();
       if (isSquare(_enteredNumber) && isTriangular(_enteredNumber)) {
-        _conclusion = 'The number ' + _enteredNumber.toString() + ' is a square and a triangular.';
+        _conclusion = 'The number $_enteredNumber is a square and a triangular.';
       } else if (isSquare(_enteredNumber)) {
-        _conclusion = 'The number ' + _enteredNumber.toString() + ' is a square.';
+        _conclusion = 'The number $_enteredNumber is a square.';
       } else if (isTriangular(_enteredNumber)) {
-        _conclusion = 'The number ' + _enteredNumber.toString() + ' is a triangular.';
+        _conclusion = 'The number $_enteredNumber is a triangular.';
       } else {
-        _conclusion = 'The number ' + _enteredNumber.toString() + ' is neither a square nor a triangular.';
+        _conclusion = 'The number $_enteredNumber is neither a square nor a triangular.';
       }
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.yellowAccent,
         body: ListView(
           padding: const EdgeInsets.all(20),
           children: <Widget>[
-            const Text(
-                'Enter a number to check if it is square or triangular.',
+            const Text('Enter a number to check if it is square or triangular.',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
                   color: Colors.black54,
                 ),
-                textAlign: TextAlign.center
-            ),
+                textAlign: TextAlign.center),
             TextField(
               controller: _controller,
               keyboardType: TextInputType.number,
               inputFormatters: <TextInputFormatter>[
                 FilteringTextInputFormatter.digitsOnly,
               ],
-              onChanged: (value) {
+              onChanged: (String value) {
                 _enteredNumber = int.parse(value);
               },
             ),
-            const SizedBox(
-                height: 270
-            ),
+            const SizedBox(height: 270),
             Align(
               alignment: Alignment.bottomRight,
               child: FloatingActionButton(
@@ -131,10 +138,7 @@ class _State extends State<MyStateFull> {
                   showAlertDialog(context);
                 },
                 backgroundColor: Colors.black54,
-                child: const Icon(
-                    Icons.check_sharp,
-                    color: Colors.teal
-                ),
+                child: const Icon(Icons.check_sharp, color: Colors.teal),
               ),
             )
           ],
