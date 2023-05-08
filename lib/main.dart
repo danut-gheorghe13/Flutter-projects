@@ -1,4 +1,4 @@
-import 'package:gad_homeworks/src/currency_converter_h1.dart' as run;
+import 'package:gad_homeworks/src/project3_guess_the_number.dart' as run;
 
 void main() {
   run.main();

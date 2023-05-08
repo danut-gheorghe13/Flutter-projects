@@ -84,13 +84,13 @@ class _State extends State<MyStateFull> {
     setState(() {
       _controller.clear();
       if (isSquare(_enteredNumber) && isTriangular(_enteredNumber)) {
-        _conclusion = 'The number ' + _enteredNumber.toString() + ' is a square and a triangular.';
+        _conclusion = 'The number $_enteredNumber is a square and a triangular.';
       } else if (isSquare(_enteredNumber)) {
-        _conclusion = 'The number ' + _enteredNumber.toString() + ' is a square.';
+        _conclusion = 'The number $_enteredNumber is a square.';
       } else if (isTriangular(_enteredNumber)) {
-        _conclusion = 'The number ' + _enteredNumber.toString() + ' is a triangular.';
+        _conclusion = 'The number $_enteredNumber is a triangular.';
       } else {
-        _conclusion = 'The number ' + _enteredNumber.toString() + ' is neither a square nor a triangular.';
+        _conclusion = 'The number $_enteredNumber is neither a square nor a triangular.';
       }
     });
   }
